@@ -1,0 +1,28 @@
+double temp;
+const int ledPin = 8;
+void setup() {
+  // put your setup code here, to run once:
+  analogReference(DEFAULT);
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+int rawValue = analogRead(A0);
+  temp = rawValue * 0.489999;
+  
+  Serial.println(temp);
+  delay(1000);
+
+  while(temp>30){
+    digitalWrite(ledPin, HIGH);
+    delay(10);
+    digitalWrite(ledPin, LOW);
+    rawValue = analogRead(A0);
+  temp = rawValue * 0.489999;
+  
+  Serial.println(temp);
+  delay(1000);
+  }
+}
